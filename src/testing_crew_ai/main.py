@@ -14,11 +14,8 @@ warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 # interpolate any tasks and agents information
 
 def run():
-    """
-    Run the crew.
-    """
     inputs = {
-        'topic': 'AI LLMs',
+        'topic': "<topic>",
         'current_year': str(datetime.now().year)
     }
     
