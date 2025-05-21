@@ -8,7 +8,7 @@ from typing import List
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
 class ResearchResults(BaseModel):
-    research_results: str = Field(..., description="The top 10 most relevant information about the topic.")
+    research_results: List[str] = Field(..., description="The top 10 most relevant information about the topic.")
 
 @CrewBase
 class TestingCrewAi():
@@ -50,6 +50,7 @@ class TestingCrewAi():
     def reporting_task(self) -> Task:
         return Task(
             config=self.tasks_config['reporting_task'], # type: ignore[index]
+            agent=self.reporting_analyst(),
             output_json=ResearchResults,
         )
 
